@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public abstract class PageBase {
-    protected final String HOST = "https://picsartstage2.com/";
+    protected final String HOST = "https://picsartstage2.com";
     public PageBase(){
         PageFactory.initElements(DriverUtils.driver,this);
         WaitHelper.getWait().waitPageToBeLoaded();

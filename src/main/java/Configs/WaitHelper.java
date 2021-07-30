@@ -1,8 +1,10 @@
 package Configs;
 
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,13 +29,21 @@ public class WaitHelper {
     }
 
     public  void waitPageToBeLoaded(){
-        Predicate<WebDriver> pageLoaded = new Predicate<WebDriver>() {
+//        Predicate<WebDriver> pageLoaded = new Predicate<WebDriver>() {
+//            @Override
+//            public boolean test(WebDriver webDriver) {
+//                return ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete");
+//            }
+//        };
+
+        ExpectedCondition<Boolean> condition = new ExpectedCondition<Boolean>() {
+            @NullableDecl
             @Override
-            public boolean test(WebDriver webDriver) {
+            public Boolean apply(@NullableDecl WebDriver webDriver) {
                 return ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete");
             }
         };
-        driverWait.until((Function)pageLoaded);
+        driverWait.until(condition);
     }
 
 }
