@@ -8,12 +8,12 @@ import org.testng.annotations.BeforeMethod;
 public  abstract class LogoutUserBase {
     @BeforeMethod
     public  void LogedInWithNewUser(){
-        DriverUtils.initDriver();
-        DriverUtils.webDriver.navigate().refresh();
+        DriverUtils.intitDriver();
+        DriverUtils.driver.navigate().refresh();
     }
 
     @AfterMethod
     void closeDriver(){
-        DriverUtils.quietDriver();
+        DriverUtils.killDriver();
     }
 }

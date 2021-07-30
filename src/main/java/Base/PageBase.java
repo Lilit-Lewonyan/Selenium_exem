@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class PageBase {
     protected final String HOST = "https://picsartstage2.com/";
     public PageBase(){
-        PageFactory.initElements(DriverUtils.webDriver,this);
+        PageFactory.initElements(DriverUtils.driver,this);
         WaitHelper.getWait().waitPageToBeLoaded();
 
     }
@@ -24,11 +24,13 @@ public abstract class PageBase {
 
     protected String getCurrentURl(){
         WaitHelper.getWait().waitPageToBeLoaded();
-        return DriverUtils.webDriver.getCurrentUrl();
+        return DriverUtils.driver.getCurrentUrl();
     }
 
-    protected void switchto(){
-      //DriverUtils.webDriver.switchTo(DriverUtils.webDriver.getWindowHandles());
+    protected void switchTo(int indexOFTab){
+    List<String> windowes = (List<String>) DriverUtils.driver.getWindowHandles();
+    DriverUtils.driver.switchTo().window(windowes.get(indexOFTab));
+    WaitHelper.getWait().waitPageToBeLoaded();
     }
 
 

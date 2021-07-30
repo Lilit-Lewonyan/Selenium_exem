@@ -2,20 +2,10 @@ package Base;
 
 
 import Configs.DriverUtils;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.net.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+
 import org.openqa.selenium.Cookie;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import java.awt.*;
-import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
 
 public  abstract class  LoginUserBase {
     protected String username;
@@ -26,15 +16,15 @@ public  abstract class  LoginUserBase {
 
   @BeforeMethod
   public  void LogedInWithNewUser(){
-      DriverUtils.initDriver();
-      DriverUtils.webDriver.get("https://picsartstage2.com");
-      DriverUtils.webDriver.manage().addCookie(new Cookie("user_key",userKey));
-      DriverUtils.webDriver.navigate().refresh();
+      DriverUtils.intitDriver();
+      DriverUtils.driver.get("https://picsartstage2.com");
+      DriverUtils.driver.manage().addCookie(new Cookie("user_key",userKey));
+      DriverUtils.driver.navigate().refresh();
   }
 
     @AfterMethod
     void closeDriver(){
-        DriverUtils.quietDriver();
+        DriverUtils.killDriver();
     }
 
 //  private void newUser(){

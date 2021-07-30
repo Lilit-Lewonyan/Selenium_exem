@@ -3,18 +3,22 @@ package Configs;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class DriverUtils {
-    public static WebDriver webDriver;
-    private  static  String path = "/Users/levonyanlilit/Downloads/chromedriver";
+    public static WebDriver driver;
+    public static String path = "/Users/levonyanlilit/Downloads/chromedriver";
+    private static final int DELAY = 20;
 
-    public static void initDriver(){
+    public static void intitDriver(){
         System.setProperty("webdriver.chrome.driver",path);
-        webDriver = new ChromeDriver();
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(DELAY, TimeUnit.SECONDS);
     }
 
-    public static void quietDriver(){
-        webDriver.close();
-        webDriver.quit();
-    }
+    public static void killDriver(){
+        driver.close();
+        driver.quit();
 
+    }
 }

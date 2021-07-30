@@ -32,15 +32,52 @@ public class SketchLanding extends PageBase {
 
     public String changingHyperTextLinkClick(){
         click(changingHyperTextLink);
+        switchTo(1);
         return getCurrentURl();
     }
 
+    public String secondSectionButtonClick(){
+        click(secondSectionButton);
+        return getCurrentURl();
+    }
+
+    public String thirdSectionButtonClick(){
+        click(thirdSectionButton);
+        return getCurrentURl();
+    }
+
+    public String forthSectionButtonClick(){
+        click(forthSectionButton);
+        return getCurrentURl();
+    }
+
+    ////
+
+    public SignUpDialog bannerButtonLogOutClick(){
+        click(bannerButton);
+        return new SignUpDialog();
+    }
+
+    public SignUpDialog secondSectionButtonLogOutClick(){
+        click(secondSectionButton);
+        return new SignUpDialog();
+    }
+
+    public SignUpDialog thirdSectionButtonLogOutClick(){
+        click(thirdSectionButton);
+        return new SignUpDialog();
+    }
+
+    public SignUpDialog forthSectionButtonLogOutClick(){
+        click(forthSectionButton);
+        return new SignUpDialog();
+    }
 
 
 
     @Override
     public void openPage() {
-        DriverUtils.webDriver.get(HOST+"/photo-effects/sketch");
+        DriverUtils.driver.get(HOST+"/photo-effects/sketch");
 
     }
 }
